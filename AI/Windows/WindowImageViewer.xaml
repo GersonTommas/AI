@@ -55,7 +55,7 @@
                             <!-- Shows the image corresponding to Drive or Folder -->
                             <Image Width="20" Margin="3" 
                                     Source="{Binding ImageName,
-                                        Converter={x:Static local:StringToImageConverter.Instance}}" />
+                                        Converter={x:Static local:DefaultStringToImageResourceConverter.Instance}}" />
                             <TextBlock VerticalAlignment="Center" Text="{Binding Name}" />
                         </StackPanel>
                     </HierarchicalDataTemplate>

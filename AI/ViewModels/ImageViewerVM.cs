@@ -103,7 +103,7 @@ namespace AI
                     Im1.SetValue(Image.HeightProperty, 100.0);
                     Im1.SetValue(Image.MaxWidthProperty, 100.0);
                     Im1.SetValue(Image.MarginProperty, new Thickness(15, 5, 15, 5));
-                    Im1.SetBinding(Image.SourceProperty, new Binding("Type") { Converter = ImageTypeToImageConverter.Instance });
+                    Im1.SetBinding(Image.SourceProperty, new Binding("Type") { Converter = ImageTypeToBitmapImageConverter.Instance });
                 }
                 // This happens if the option "Thumbnails" is selected
                 else
@@ -113,7 +113,7 @@ namespace AI
                     Br.SetValue(Border.PaddingProperty, new Thickness(5));
 
                     // Image Source is set to be the FullPath of the file
-                    Im1.SetValue(Image.SourceProperty, new Binding("FullPath") { Converter = StringToBitmapImageConverter.Instance });
+                    Im1.SetValue(Image.SourceProperty, new Binding("FullPath") { Converter = StringToSmallBitmapImageConverter.Instance });
                 }
 
                 // Appends to create the actual Visual Tree for the DataTemplate

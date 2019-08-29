@@ -11,11 +11,11 @@ namespace AI
     /// <summary>
     /// Converts a DirectoryItemType to a specific image type of a drive, folder or file
     /// </summary>
-    [ValueConversion(typeof(DirectoryItemType), typeof(BitmapImage))]
-    public class StringToImageConverter : IValueConverter
+    [ValueConversion(typeof(string), typeof(BitmapImage))]
+    public class DefaultStringToImageResourceConverter : IValueConverter
     {
         // Instance of the Converter, makes the converter ready to use
-        public static StringToImageConverter Instance = new StringToImageConverter();
+        public static DefaultStringToImageResourceConverter Instance = new DefaultStringToImageResourceConverter();
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -30,10 +30,10 @@ namespace AI
     /// Converts a String to a BitmapImage with DecodePixelWidth of 100 to decrease the loading time
     /// </summary>
     [ValueConversion(typeof(string), typeof(BitmapImage))]
-    public class StringToBitmapImageConverter : IValueConverter
+    public class StringToSmallBitmapImageConverter : IValueConverter
     {
         // Instance of the Converter, makes the converter ready to use
-        public static StringToBitmapImageConverter Instance = new StringToBitmapImageConverter();
+        public static StringToSmallBitmapImageConverter Instance = new StringToSmallBitmapImageConverter();
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -62,10 +62,10 @@ namespace AI
     /// Converts a ImageType to a specific image by its extension
     /// </summary>
     [ValueConversion(typeof(ImageType), typeof(BitmapImage))]
-    public class ImageTypeToImageConverter : IValueConverter
+    public class ImageTypeToBitmapImageConverter : IValueConverter
     {
         // Instance of the Converter, makes the converter ready to use
-        public static ImageTypeToImageConverter Instance = new ImageTypeToImageConverter();
+        public static ImageTypeToBitmapImageConverter Instance = new ImageTypeToBitmapImageConverter();
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -134,14 +134,15 @@ namespace AI
     /// Turns the boolean from False to True, and from True to False, if it is not a boolean, it returns the value as it is
     /// </summary>
     [ValueConversion(typeof(bool), typeof(bool))]
-    public class BoolInversionConverter : IValueConverter
+    public class DefaultBoolInverterConverter : IValueConverter
     {
         // Instance of the converter, makes the converter ready to use
-        public static BoolInversionConverter instance = new BoolInversionConverter();
+        public static DefaultBoolInverterConverter instance = new DefaultBoolInverterConverter();
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            try { return !(bool)value; } catch { return value; } }
+            try { return !(bool)value; } catch { return value; }
+        }
 
         // ConvertBack not implemented
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) { throw new NotImplementedException("Not implemented."); }
