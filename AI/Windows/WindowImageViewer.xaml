@@ -20,6 +20,7 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
+        
         <!-- Upper Panel -->
         <StackPanel Orientation="Horizontal" Grid.ColumnSpan="3">
             <!-- If checked it will favorite the folder and the Star will be Filled -->
