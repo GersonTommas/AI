@@ -14,14 +14,17 @@ namespace AI
     {
         // View model instance initialization
         DirectoryViewModel DVM = new DirectoryViewModel();
+
         #region Constructor
 
-        // Default Constructor
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
         public WindowImageViewer()
         {
             InitializeComponent();
 
-            // Binding the view model
+            // Binds the View Model to the Window
             this.DataContext = DVM;
         }
 

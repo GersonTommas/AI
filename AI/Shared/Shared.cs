@@ -9,13 +9,24 @@ using System.Globalization;
 namespace AI
 {
     #region Shared
+
     class Shared
     {
         #region Variables
+
+        // Language for the UI
         public static string Lang_ => Properties.Settings.Default.AllWindowLanguage;
-        #endregion // Variables
+
+        #endregion
+
 
         #region Feeds
+
+        /// <summary>
+        /// NOT IMPLEMENTED
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
         public System.ServiceModel.Syndication.SyndicationFeed feed(string url)
         {
             System.ServiceModel.Syndication.SyndicationFeed returnFeed;
@@ -24,23 +35,49 @@ namespace AI
 
             return returnFeed;
         }
-        #endregion // Feeds
+
+        #endregion
 
     }
-    #endregion // Shared
+
+    #endregion
 
 
     #region Command
+    
+    /// <summary>
+    /// Implementation to use commands on MVVM "Public Command _Name_ { get { new Command (() => { ... Do stuf ... }, () => { return true/false }); } }
+    /// </summary>
     public class Command : ICommand
     {
+        #region Delegates
+
         public delegate void ICommandOnExecute();
         public delegate bool ICommandOnCanExecute();
+
+        #endregion
+
+
+        #region Private
 
         private ICommandOnExecute _execute;
         private ICommandOnCanExecute _canExecute;
 
+        #endregion
+
+
+        #region Constructor
+
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
+        /// <param name="onExecuteMethod">Where the command do stuf</param>
+        /// <param name="onCanExecuteMethod">Returns True/False if it Can/Can't do stuf</param>
         public Command(ICommandOnExecute onExecuteMethod, ICommandOnCanExecute onCanExecuteMethod = null)
         { _execute = onExecuteMethod; _canExecute = onCanExecuteMethod; }
+
+        #endregion
+
 
         #region ICommand Members
         public event EventHandler CanExecuteChanged
@@ -50,7 +87,8 @@ namespace AI
         public void Execute(object parameter) { _execute?.Invoke(); }
         #endregion
     }
-    #endregion // Command
+
+    #endregion
 
 
     #region Property Changed
@@ -69,7 +107,7 @@ namespace AI
         /// <summary>
         /// Call this to fire <see cref="PropertyChanged"/> event
         /// </summary>
-        /// <param name="name"></param>
+        /// <param name="name">Name of the property to be Updated as string</param>
         protected void OnPropertyChanged(string name) { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name)); }
     }
 

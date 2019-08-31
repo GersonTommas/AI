@@ -26,6 +26,7 @@
 
     #endregion
 
+
     #region Directory Type
 
     /// <summary>
@@ -51,6 +52,7 @@
 
 
     #region Image Item
+
     /// <summary>
     /// This item contains the image path, size, extension
     /// </summary>
@@ -107,6 +109,7 @@
 
 
     #region Image Type
+
     /// <summary>
     /// The image extension
     /// </summary>
@@ -134,6 +137,7 @@
         /// </summary>
         Unknown
     }
+
     #endregion
 
 }

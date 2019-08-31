@@ -240,7 +240,9 @@ namespace AI
                 OnPropertyChanged("Children");
             }
         }
+
         #endregion
+
 
         #region Public Commands
 
@@ -250,6 +252,7 @@ namespace AI
         public Command ExpandCommand { get { return new Command(() => { Expand(); }, () => { return this.Type != DirectoryItemType.File; }); } }
 
         #endregion
+
 
         #region Constructor
 
@@ -270,6 +273,7 @@ namespace AI
         }
 
         #endregion
+
 
         #region Helper Methods
 

@@ -12,13 +12,19 @@
     <Grid>
         
         <Grid.RowDefinitions>
+            <!-- Tab Control -->
             <RowDefinition Height="*"/>
+            <!-- Buttons -->
             <RowDefinition Height="AUTO"/>
         </Grid.RowDefinitions>
 
-        <TabControl>
+        <!-- Tab Control -->
+        <TabControl Grid.Row="0">
+            
+            <!-- Colors Tab -->
             <TabItem Header="Colors">
                 <StackPanel HorizontalAlignment="Stretch">
+                    <!-- Windows Box -->
                     <GroupBox Header="Windows">
                         <StackPanel HorizontalAlignment="Stretch">
                             <Grid>
@@ -41,6 +47,7 @@
                         </StackPanel>
                     </GroupBox>
 
+                    <!-- Readding Pane Box -->
                     <GroupBox Header="Reading Panel">
                         <StackPanel HorizontalAlignment="Stretch">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
@@ -53,58 +60,76 @@
                 </StackPanel>
             </TabItem>
 
+            <!-- Language Tab -->
             <TabItem Header="Language">
-
+                
             </TabItem>
-
+            
+            
+            <!-- Feeds Tab -->
             <TabItem Header="Feeds">
 
             </TabItem>
-
+            
+            <!-- Social Tab -->
             <TabItem Header="Social">
                 <StackPanel HorizontalAlignment="Stretch">
+                    <!-- Facebook Grid -->
                     <Grid>
+                        
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="AUTO"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
+                        
                         <Label Content="Facebook:"/>
                         <UniformGrid Columns="2" Grid.Column="1" >
                             <TextBox Text="Email" VerticalAlignment="Center"/>
                             <TextBox Text="Password" VerticalAlignment="Center"/>
                         </UniformGrid>
+                        
                     </Grid>
 
+                    <!-- Instagram Grid -->
                     <Grid>
+                        
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
+                        
                         <Label Content="Instagram:"/>
                         <UniformGrid Columns="2" Grid.Column="1">
                             <TextBox Text="Email" VerticalAlignment="Center"/>
                             <TextBox Text="Password" VerticalAlignment="Center"/>
                         </UniformGrid>
+                        
                     </Grid>
 
-
+                    <!-- Tweeter Grid -->
                     <Grid>
+                        
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
+                        
                         <Label Content="Tweeter:"/>
                         <UniformGrid Columns="2" Grid.Column="1">
                             <TextBox Text="Email" VerticalAlignment="Center"/>
                             <TextBox Text="Password" VerticalAlignment="Center"/>
                         </UniformGrid>
+                        
                     </Grid>
                 </StackPanel>
             </TabItem>
 
+            <!-- Emails Tab -->
             <TabItem Header="Email">
                 <StackPanel HorizontalAlignment="Stretch">
+                    <!-- Personal Email -->
                     <Grid>
+                        
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="AUTO"/>
                             <ColumnDefinition Width="*"/>
@@ -112,29 +137,36 @@
 
                         <Label Content="Personal Email:" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
                         <TextBox VerticalAlignment="Center" Grid.Column="1"/>
+                        
                     </Grid>
 
+                    <!-- Work Email -->
                     <Grid>
+                        
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
+                        
                         <Label Content="Work Email:"/>
                         <TextBox VerticalAlignment="Center" Grid.Column="1"/>
+                        
                     </Grid>
                 </StackPanel>
             </TabItem>
         </TabControl>
         
-        
+        <!-- Buttons -->
         <Grid Grid.Row="1">
+            
             <Button Content="Default" Command="{Binding ButtonDefaultCommand}"/>
+            
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Content="Reset" Command="{Binding ButtonResetCommand}"/>
                 <Button Content="Cancel" Command="{Binding ButtonCancelCommand}"/>
                 <Button Content="Accept" Command="{Binding ButtonAcceptCommand}"/>
                 <Button Content="Apply" Command="{Binding ButtonApplyCommand}"/>
             </StackPanel>
+            
         </Grid>
 
     </Grid>

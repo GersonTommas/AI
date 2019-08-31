@@ -8,21 +8,29 @@
         Title="Media Viewer" Height="450" Width="800">
     <!-- Root Grid -->
     <Grid Background="CornflowerBlue">
+        
         <Grid.RowDefinitions>
+            <!-- Upper Panel -->
             <RowDefinition Height="Auto" />
+            <!-- Content Panel -->
             <RowDefinition Height="*" />
+            <!-- Status Bar -->
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
+            <!-- Left Panel (TreeView) -->
             <ColumnDefinition Width="300" />
+            <!-- Grid Splitter (Vertical) -->
             <ColumnDefinition Width="Auto" />
+            <!-- Right Panel (Images) -->
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         
         <!-- Upper Panel -->
-        <StackPanel Orientation="Horizontal" Grid.ColumnSpan="3">
+        <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.ColumnSpan="3">
+            
             <!-- If checked it will favorite the folder and the Star will be Filled -->
             <Image Source="/Images/StarOff.png" Height="25" Margin="5" />
             <CheckBox Content="Star" FontSize="15" VerticalAlignment="Center" />
@@ -30,16 +38,21 @@
             <Button Content="Hide" FontSize="15" VerticalAlignment="Center" />
             <!-- Alternates between List mode and Thumbnails mode of the Images ListBoxes -->
             <ComboBox FontSize="15" ItemsSource="{Binding ComboBoxItemsList}" SelectedItem="{Binding ComboBoxSelItem}" />
+            
         </StackPanel>
 
 
         <!-- Folders' Tree View (Left panel) -->
-        <Grid Grid.Row="1">
+        <Grid Grid.Column="0" Grid.Row="1">
+            
             <Grid.RowDefinitions>
+                <!-- Favorites -->
                 <RowDefinition Height="Auto"/>
+                <!-- TreeView -->
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
+            
             <!-- The actual TreeView that will show all the folders and drives -->
             <TreeView x:Name="FolderView" ItemsSource="{Binding Folders}"  Grid.Row="1" SelectedItemChanged="FolderView_SelectedItemChanged">
 
@@ -71,29 +84,37 @@
 
         <!-- Image related Grid (Right Panel) -->
         <Grid Grid.Column="2" Grid.Row="1">
+            
             <Grid.RowDefinitions>
+                <!-- Image List -->
                 <RowDefinition Height="*"/>
+                <!-- Grid Splitter (Horizontal) -->
                 <RowDefinition Height="Auto"/>
+                <!-- View Panel -->
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
 
 
             <!-- Listbox Showing images, if "List" is selected, it will be hidden and inactive -->
-            <ListBox ItemTemplate="{Binding ListBoxImagesTemplate}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding ImagesList}" SelectedItem="{Binding ImageSelected}" >
+            <ListBox ItemTemplate="{Binding ListBoxImagesTemplate}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding ImagesList}" SelectedItem="{Binding ImageSelected}" Grid.Row="0" >
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
+                        
                         <!-- Sets the ListBox Container as a WrapPanel with Virtualization On -->
                         <WrapPanel HorizontalAlignment="Stretch" IsItemsHost="True" VirtualizingStackPanel.IsVirtualizing="True" />
+                        
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
                 <ListBox.ItemContainerStyle>
+                    
                     <Style TargetType="ListBoxItem">
                         <!-- Sets the Max Height of any given image -->
                         <Setter Property="MaxHeight" Value="200" />
                         <!-- Sets the Max Width of any given image -->
                         <Setter Property="MaxWidth" Value="200" />
                     </Style>
+                    
                 </ListBox.ItemContainerStyle>
             </ListBox>
             
@@ -109,34 +130,40 @@
         </Grid>
 
         <!-- Status Bar -->
-        
-            <Grid HorizontalAlignment="Stretch" Margin="2" Grid.Row="2" Grid.ColumnSpan="3">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                
-                <Border Background="AliceBlue" BorderBrush="LightGray" BorderThickness="1" Padding="4" Grid.Column="0">
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" >
 
-                        <!-- Shows how many Images are on the selected folder -->
-                        <TextBlock Text="{Binding ImagesList.Count}" FontSize="15" />
+        <Grid HorizontalAlignment="Stretch" Margin="2" Grid.Row="2" Grid.ColumnSpan="3">
 
-                        <TextBlock Text=" Image(s) found." FontSize="15" />
-                    </StackPanel>
+            <Grid.ColumnDefinitions>
+                <!-- Images Found -->
+                <ColumnDefinition Width="Auto" />
+                <!-- Separator -->
+                <ColumnDefinition Width="Auto" />
+                <!-- Current Image Information -->
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
 
-                </Border>
+            <!-- Images Found -->
+            <Border Background="AliceBlue" BorderBrush="LightGray" BorderThickness="1" Padding="4" Grid.Column="0">
 
-                
-                <TextBlock Text=" | " Grid.Column="1" VerticalAlignment="Center" />
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" >
+                    <!-- Shows how many Images are on the selected folder -->
+                    <TextBlock Text="{Binding ImagesList.Count}" FontSize="15" />
 
-                <Border Background="AliceBlue" BorderBrush="LightGray" BorderThickness="1" Padding="4" HorizontalAlignment="Stretch" Grid.Column="2">
-                    <!-- Shows the Image Name-->
-                    <TextBlock Text="{Binding ImageSelected.Name}" FontSize="15" VerticalAlignment="Center" />
-                </Border>
-            </Grid>
-        
+                    <TextBlock Text=" Image(s) found." FontSize="15" />
+                </StackPanel>
+
+            </Border>
+
+            <!-- Separator -->
+            <TextBlock Text=" | " Grid.Column="1" VerticalAlignment="Center" />
+
+            <!-- Current Image Information -->
+            <Border Background="AliceBlue" BorderBrush="LightGray" BorderThickness="1" Padding="4" HorizontalAlignment="Stretch" Grid.Column="2">
+                <!-- Shows the Image Name-->
+                <TextBlock Text="{Binding ImageSelected.Name}" FontSize="15" VerticalAlignment="Center" />
+            </Border>
+
+        </Grid>
 
     </Grid>
 </Window>
